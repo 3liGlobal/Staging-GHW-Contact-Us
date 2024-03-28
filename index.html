@@ -8,6 +8,7 @@
     <link href="./css/form.css" rel="stylesheet" type="text/css">
     <script src="js/validation.js"></script>
 </head>
+
 <body class="zf-backgroundBg">
     <!-- Change or deletion of the name attributes in the input tag will lead to empty values on record submission-->
     <div class="zf-templateWidth">
@@ -40,10 +41,11 @@
                                             placeholder="" />
                                     </li>
                                 </div>
-                                    </span> </span>
-                                    <div class="zf-clearBoth"></div>
-                              
-                                <p id="Name_error" class="zf-errorMessage" style="display:none;">Please complete this required field.</p>
+                                </span> </span>
+                                <div class="zf-clearBoth"></div>
+
+                                <p id="Name_error" class="zf-errorMessage" style="display:none;">Please complete this
+                                    required field.</p>
                             </div>
                             <div class="zf-clearBoth"></div>
                         </div><!---------Name Ends Here---------->
@@ -67,9 +69,12 @@
                                     <em class="zf-important">*</em>
                                 </label>
                                 <div class="zf-tempContDiv">
-                                    <span> <input fieldType=9 type="text" maxlength="255" name="Email" checktype="c5"
-                                            value="" placeholder="" id="Email" /></span>
-                                    <p id="Email_error" class="zf-errorMessage" style="display:none;">Please complete this required field.</p>
+                                    <span id="loaderContainer"> <input fieldType=9 type="text" maxlength="255"
+                                            name="Email" checktype="c5" value="" placeholder="" id="Email" />
+                                        <div id="loader"></div>
+                                    </span>
+                                    <p id="Email_error" class="zf-errorMessage" style="display:none;">Please complete
+                                        this required field.</p>
                                 </div>
                                 <div class="zf-clearBoth"></div>
                             </li>
@@ -87,10 +92,11 @@
                                                 isCountryCodeEnabled=false fieldType="11"
                                                 id="international_PhoneNumber_countrycode" valType="number"
                                                 phoneFormatType="1" placeholder="" />
-                                         </span>
+                                        </span>
                                         <div class="zf-clearBoth"></div>
                                     </div>
-                                    <p id="PhoneNumber_error" class="zf-errorMessage" style="display:none;">Please complete this required field.
+                                    <p id="PhoneNumber_error" class="zf-errorMessage" style="display:none;">Please
+                                        complete this required field.
                                     </p>
                                 </div>
                                 <div class="zf-clearBoth"></div>
@@ -102,7 +108,8 @@
                                 <div class="zf-tempContDiv">
                                     <span> <input type="text" name="SingleLine1" checktype="c1" value="" maxlength="255"
                                             fieldType=1 placeholder="" /></span>
-                                    <p id="SingleLine1_error" class="zf-errorMessage" style="display:none;">Please complete this required field.
+                                    <p id="SingleLine1_error" class="zf-errorMessage" style="display:none;">Please
+                                        complete this required field.
                                     </p>
                                 </div>
                                 <div class="zf-clearBoth"></div>
@@ -203,7 +210,8 @@
                             <div class="zf-tempContDiv">
                                 <span> <input type="text" name="SingleLine2" checktype="c1" value="" maxlength="255"
                                         fieldType=1 placeholder="" /></span>
-                                <p id="SingleLine2_error" class="zf-errorMessage" style="display:none;">Please complete this required field.
+                                <p id="SingleLine2_error" class="zf-errorMessage" style="display:none;">Please complete
+                                    this required field.
                                 </p>
                             </div>
                             <div class="zf-clearBoth"></div>
@@ -214,8 +222,14 @@
                             </label>
                             <div class="zf-tempContDiv">
                                 <span> <textarea name="MultiLine" checktype="c1" maxlength="65535"
+<<<<<<< Updated upstream
                                         placeholder="" style="font-family: Arial, Helvetica, sans-serif;"></textarea> </span>
                                 <p id="MultiLine_error" class="zf-errorMessage" style="display:none;">Please complete this required field.</p>
+=======
+                                        placeholder=""></textarea> </span>
+                                <p id="MultiLine_error" class="zf-errorMessage" style="display:none;">Please complete
+                                    this required field.</p>
+>>>>>>> Stashed changes
                             </div>
                             <div class="zf-clearBoth"></div>
                         </li><!---------Multiple Line Ends Here---------->
@@ -236,7 +250,16 @@
         window.addEventListener('message', function (event) {
             var email = event.data;
             document.getElementById('Email').value = email;
+            document.getElementById("Email").readOnly = true;
+            let checkField = setInterval(function () {
+                if ($('#Email').val() !== '') {
+                    $('#loader').hide();
+                    clearInterval(checkField);
+                }
+            }, 100);
+            $('#loader').hide();
         });
     </script>
 </body>
+
 </html>
